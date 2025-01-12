@@ -1,0 +1,2 @@
+- experiment=fish_baseline_concurrent_universalization
+- llm.path=Qwen/Qwen2.5-0.5B-Instruct
