@@ -1,3 +1,0 @@
-- experiment=fish_baseline_concurrent
-- llm.path=gpt-4o-mini-2024-07-18
-- llm.is_api=true

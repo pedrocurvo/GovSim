@@ -1,3 +1,0 @@
-- experiment=fish_baseline_concurrent_universalization
-- llm.path=gpt-3.5-turbo-0125
-- llm.is_api=true
