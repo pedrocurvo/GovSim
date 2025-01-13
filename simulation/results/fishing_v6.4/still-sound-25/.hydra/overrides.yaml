@@ -1,0 +1,2 @@
+- experiment=fish_baseline_concurrent
+- llm.path=Qwen/Qwen2.5-0.5B-Instruct
