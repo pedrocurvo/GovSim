@@ -27,18 +27,64 @@ This repository accompanies our research paper titled "**Cooperate or Collapse: 
 
 
 
-## Simulation
+## **Simulation**
 
-Each experiment is defined by hydra configuration. To run an experiment, use 
-`python3 -m simulation.main experiment=<scenario_name>_<experiment_name>`.
-For example, to run the experiment `fish_baseline_concurrent` , use
-`python3 -m simulation.main experiment=fish_baseline_concurrent`. See below for the list of experiments and their ids.
+Each experiment in GovSim is defined using a **Hydra configuration**. Follow these steps to run an experiment:
+
+### **Basic Command**
+To execute an experiment, use the following command:  
+```bash
+python3 -m simulation.main experiment=<scenario_name>_<experiment_name>
+```
+
+**Example**
+
+To run the experiment fish_baseline_concurrent:
+
+```
+python3 -m simulation.main experiment=fish_baseline_concurrent
+```
+
+### **General Command Structure**
+
+For more flexibility, you can specify the language model (LLM):
 
 ```
 python3 -m simulation.main experiment=<experiment_id> llm.path=<path_to_llm>
 ```
 
+where `<experiment_id>` is the experiment name and `<path_to_llm>` is the API model name or the Hugging Face model name. Some models might require changes to the ```pathfinder``` library, which is used for finding the correct model path.
 
+**Example**
+
+To run the experiment fish_baseline_concurrent with meta-llama/Llama-2-7b-chat-hf:
+
+```
+python3 -m simulation.main experiment=fish_baseline_concurrent llm.path=meta-llama/Llama-2-7b-chat-hf
+```
+
+### For API-based models (e.g., OpenAI, Anthropic):
+
+1. Rename the .env_example file to .env, since .env is in the .gitignore file because it contains sensitive information and should not be pushed to the repository.
+2.	Add your API keys to the .env file.
+3.	Run the following command:
+
+```
+python3 -m simulation.main experiment=<experiment_id> llm.path=<path_to_llm> llm.is_api=true
+```
+**Example**
+
+To run the experiment fish_baseline_concurrent with gpt-4-turbo-2024-04-09:
+
+```
+python3 -m simulation.main experiment=fish_baseline_concurrent llm.path=gpt-4-turbo-2024-04-09 llm.is_api=true
+```
+
+### For Hugging Face models:
+
+If you are running the `transformers` library, first you need to login in the Hugging Face API by running `huggingface-cli login`. To see more options of Hugging Face API, please refer to the [Hugging Face API documentation](https://huggingface.co/docs/huggingface_hub/en/guides/cli).
+After that, you can run the commands above, but you might need to first accept the model conditions
+in your Hugging Face account.
 
 ### Table of experiments
 | Experiment in the paper      | Fishery  | Pasture | Pollution | 
