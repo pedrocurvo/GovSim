@@ -1,0 +1,309 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+/var/spool/slurm/slurmd/job9369509/slurm_script: line 15: cd: /home/mdragomir/uvadlc_practicals_2024/: No such file or directory
+
+EnvironmentFileNotFound: '/gpfs/home6/mdragomir/GovSim/environment.yml' file not found
+
+Collecting package metadata (current_repodata.json): ...working... DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/main/noarch/current_repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/main/linux-64/current_repodata.json HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/r/noarch/current_repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/r/linux-64/current_repodata.json HTTP/1.1" 304 0
+done
+Solving environment: ...working... unsuccessful attempt using repodata from current_repodata.json, retrying with next repodata source.
+Collecting package metadata (repodata.json): ...working... DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/r/noarch/repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/main/noarch/repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/main/linux-64/repodata.json HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/r/linux-64/repodata.json HTTP/1.1" 304 0
+done
+Solving environment: ...working... done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.7.2
+  latest version: 24.11.3
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=24.11.3
+
+
+
+## Package Plan ##
+
+  environment location: /home/mdragomir/.conda/envs/GovComGPTQ
+
+  added / updated specs:
+    - python=3.11.5
+
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu 
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2024.12.31-h06a4308_0 
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.40-h12ee557_0 
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_1 
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1 
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1 
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1 
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0 
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0 
+  openssl            pkgs/main/linux-64::openssl-3.0.15-h5eee18b_0 
+  pip                pkgs/main/linux-64::pip-24.2-py311h06a4308_0 
+  python             pkgs/main/linux-64::python-3.11.5-h955ad1f_0 
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0 
+  setuptools         pkgs/main/linux-64::setuptools-75.1.0-py311h06a4308_0 
+  sqlite             pkgs/main/linux-64::sqlite-3.45.3-h5eee18b_0 
+  tk                 pkgs/main/linux-64::tk-8.6.14-h39e8969_0 
+  tzdata             pkgs/main/noarch::tzdata-2024b-h04d1e81_0 
+  wheel              pkgs/main/linux-64::wheel-0.44.0-py311h06a4308_0 
+  xz                 pkgs/main/linux-64::xz-5.4.6-h5eee18b_1 
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_1 
+
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate GovComGPTQ
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+usage: conda [-h] [--no-plugins] [-V] COMMAND ...
+conda: error: argument COMMAND: invalid choice: 'activate' (choose from 'clean', 'compare', 'config', 'create', 'info', 'init', 'install', 'list', 'notices', 'package', 'remove', 'uninstall', 'rename', 'run', 'search', 'update', 'upgrade', 'build', 'convert', 'debug', 'develop', 'doctor', 'index', 'inspect', 'metapackage', 'render', 'skeleton', 'repo', 'server', 'verify', 'env', 'content-trust', 'pack', 'token')
+Collecting package metadata (current_repodata.json): ...working... DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): conda.anaconda.org:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): conda.anaconda.org:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/r/noarch/current_repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/r/linux-64/current_repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/main/noarch/current_repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://repo.anaconda.com:443 "GET /pkgs/main/linux-64/current_repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/noarch/current_repodata.json HTTP/1.1" 404 None
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/current_repodata.json HTTP/1.1" 404 None
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/noarch/repodata.json HTTP/1.1" 304 0
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/repodata.json HTTP/1.1" 304 0
+done
+Solving environment: ...working... done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.7.2
+  latest version: 24.11.3
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=24.11.3
+
+
+
+## Package Plan ##
+
+  environment location: /sw/arch/RHEL8/EB_production/2023/software/Anaconda3/2023.07-2
+
+  added / updated specs:
+    - cuda
+    - cuda-toolkit
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    cuda-libraries-12.1.0      |                0           2 KB  nvidia/label/cuda-12.1.0
+    cuda-runtime-12.1.0        |                0           1 KB  nvidia/label/cuda-12.1.0
+    libcublas-12.1.0.26        |                0       329.0 MB  nvidia/label/cuda-12.1.0
+    libcufft-11.0.2.4          |                0       102.9 MB  nvidia/label/cuda-12.1.0
+    libcusolver-11.4.4.55      |                0        98.3 MB  nvidia/label/cuda-12.1.0
+    libcusparse-12.0.2.55      |                0       163.0 MB  nvidia/label/cuda-12.1.0
+    libnpp-12.0.2.50           |                0       139.8 MB  nvidia/label/cuda-12.1.0
+    ------------------------------------------------------------
+                                           Total:       832.9 MB
+
+The following NEW packages will be INSTALLED:
+
+  cuda               nvidia/label/cuda-12.1.0/linux-64::cuda-12.1.0-0 
+  cuda-cccl          nvidia/label/cuda-12.1.0/linux-64::cuda-cccl-12.1.55-0 
+  cuda-command-line~ nvidia/label/cuda-12.1.0/linux-64::cuda-command-line-tools-12.1.0-0 
+  cuda-compiler      nvidia/label/cuda-12.1.0/linux-64::cuda-compiler-12.1.0-0 
+  cuda-cudart        nvidia/label/cuda-12.1.0/linux-64::cuda-cudart-12.1.55-0 
+  cuda-cudart-dev    nvidia/label/cuda-12.1.0/linux-64::cuda-cudart-dev-12.1.55-0 
+  cuda-cudart-static nvidia/label/cuda-12.1.0/linux-64::cuda-cudart-static-12.1.55-0 
+  cuda-cuobjdump     nvidia/label/cuda-12.1.0/linux-64::cuda-cuobjdump-12.1.55-0 
+  cuda-cupti         nvidia/label/cuda-12.1.0/linux-64::cuda-cupti-12.1.62-0 
+  cuda-cupti-static  nvidia/label/cuda-12.1.0/linux-64::cuda-cupti-static-12.1.62-0 
+  cuda-cuxxfilt      nvidia/label/cuda-12.1.0/linux-64::cuda-cuxxfilt-12.1.55-0 
+  cuda-demo-suite    nvidia/label/cuda-12.1.0/linux-64::cuda-demo-suite-12.1.55-0 
+  cuda-documentation nvidia/label/cuda-12.1.0/linux-64::cuda-documentation-12.1.55-0 
+  cuda-driver-dev    nvidia/label/cuda-12.1.0/linux-64::cuda-driver-dev-12.1.55-0 
+  cuda-gdb           nvidia/label/cuda-12.1.0/linux-64::cuda-gdb-12.1.55-0 
+  cuda-libraries     nvidia/label/cuda-12.1.0/linux-64::cuda-libraries-12.1.0-0 
+  cuda-libraries-dev nvidia/label/cuda-12.1.0/linux-64::cuda-libraries-dev-12.1.0-0 
+  cuda-libraries-st~ nvidia/label/cuda-12.1.0/linux-64::cuda-libraries-static-12.1.0-0 
+  cuda-nsight        nvidia/label/cuda-12.1.0/linux-64::cuda-nsight-12.1.55-0 
+  cuda-nsight-compu~ nvidia/label/cuda-12.1.0/linux-64::cuda-nsight-compute-12.1.0-0 
+  cuda-nvcc          nvidia/label/cuda-12.1.0/linux-64::cuda-nvcc-12.1.66-0 
+  cuda-nvdisasm      nvidia/label/cuda-12.1.0/linux-64::cuda-nvdisasm-12.1.55-0 
+  cuda-nvml-dev      nvidia/label/cuda-12.1.0/linux-64::cuda-nvml-dev-12.1.55-0 
+  cuda-nvprof        nvidia/label/cuda-12.1.0/linux-64::cuda-nvprof-12.1.55-0 
+  cuda-nvprune       nvidia/label/cuda-12.1.0/linux-64::cuda-nvprune-12.1.55-0 
+  cuda-nvrtc         nvidia/label/cuda-12.1.0/linux-64::cuda-nvrtc-12.1.55-0 
+  cuda-nvrtc-dev     nvidia/label/cuda-12.1.0/linux-64::cuda-nvrtc-dev-12.1.55-0 
+  cuda-nvrtc-static  nvidia/label/cuda-12.1.0/linux-64::cuda-nvrtc-static-12.1.55-0 
+  cuda-nvtx          nvidia/label/cuda-12.1.0/linux-64::cuda-nvtx-12.1.66-0 
+  cuda-nvvp          nvidia/label/cuda-12.1.0/linux-64::cuda-nvvp-12.1.55-0 
+  cuda-opencl        nvidia/label/cuda-12.1.0/linux-64::cuda-opencl-12.1.56-0 
+  cuda-opencl-dev    nvidia/label/cuda-12.1.0/linux-64::cuda-opencl-dev-12.1.56-0 
+  cuda-profiler-api  nvidia/label/cuda-12.1.0/linux-64::cuda-profiler-api-12.1.55-0 
+  cuda-runtime       nvidia/label/cuda-12.1.0/linux-64::cuda-runtime-12.1.0-0 
+  cuda-sanitizer-api nvidia/label/cuda-12.1.0/linux-64::cuda-sanitizer-api-12.1.55-0 
+  cuda-toolkit       nvidia/label/cuda-12.1.0/linux-64::cuda-toolkit-12.1.0-0 
+  cuda-tools         nvidia/label/cuda-12.1.0/linux-64::cuda-tools-12.1.0-0 
+  cuda-visual-tools  nvidia/label/cuda-12.1.0/linux-64::cuda-visual-tools-12.1.0-0 
+  gds-tools          nvidia/label/cuda-12.1.0/linux-64::gds-tools-1.6.0.25-0 
+  libcublas          nvidia/label/cuda-12.1.0/linux-64::libcublas-12.1.0.26-0 
+  libcublas-dev      nvidia/label/cuda-12.1.0/linux-64::libcublas-dev-12.1.0.26-0 
+  libcublas-static   nvidia/label/cuda-12.1.0/linux-64::libcublas-static-12.1.0.26-0 
+  libcufft           nvidia/label/cuda-12.1.0/linux-64::libcufft-11.0.2.4-0 
+  libcufft-dev       nvidia/label/cuda-12.1.0/linux-64::libcufft-dev-11.0.2.4-0 
+  libcufft-static    nvidia/label/cuda-12.1.0/linux-64::libcufft-static-11.0.2.4-0 
+  libcufile          nvidia/label/cuda-12.1.0/linux-64::libcufile-1.6.0.25-0 
+  libcufile-dev      nvidia/label/cuda-12.1.0/linux-64::libcufile-dev-1.6.0.25-0 
+  libcufile-static   nvidia/label/cuda-12.1.0/linux-64::libcufile-static-1.6.0.25-0 
+  libcurand          nvidia/label/cuda-12.1.0/linux-64::libcurand-10.3.2.56-0 
+  libcurand-dev      nvidia/label/cuda-12.1.0/linux-64::libcurand-dev-10.3.2.56-0 
+  libcurand-static   nvidia/label/cuda-12.1.0/linux-64::libcurand-static-10.3.2.56-0 
+  libcusolver        nvidia/label/cuda-12.1.0/linux-64::libcusolver-11.4.4.55-0 
+  libcusolver-dev    nvidia/label/cuda-12.1.0/linux-64::libcusolver-dev-11.4.4.55-0 
+  libcusolver-static nvidia/label/cuda-12.1.0/linux-64::libcusolver-static-11.4.4.55-0 
+  libcusparse        nvidia/label/cuda-12.1.0/linux-64::libcusparse-12.0.2.55-0 
+  libcusparse-dev    nvidia/label/cuda-12.1.0/linux-64::libcusparse-dev-12.0.2.55-0 
+  libcusparse-static nvidia/label/cuda-12.1.0/linux-64::libcusparse-static-12.0.2.55-0 
+  libnpp             nvidia/label/cuda-12.1.0/linux-64::libnpp-12.0.2.50-0 
+  libnpp-dev         nvidia/label/cuda-12.1.0/linux-64::libnpp-dev-12.0.2.50-0 
+  libnpp-static      nvidia/label/cuda-12.1.0/linux-64::libnpp-static-12.0.2.50-0 
+  libnvjitlink       nvidia/label/cuda-12.1.0/linux-64::libnvjitlink-12.1.55-0 
+  libnvjitlink-dev   nvidia/label/cuda-12.1.0/linux-64::libnvjitlink-dev-12.1.55-0 
+  libnvjpeg          nvidia/label/cuda-12.1.0/linux-64::libnvjpeg-12.1.0.39-0 
+  libnvjpeg-dev      nvidia/label/cuda-12.1.0/linux-64::libnvjpeg-dev-12.1.0.39-0 
+  libnvjpeg-static   nvidia/label/cuda-12.1.0/linux-64::libnvjpeg-static-12.1.0.39-0 
+  libnvvm-samples    nvidia/label/cuda-12.1.0/linux-64::libnvvm-samples-12.1.55-0 
+  nsight-compute     nvidia/label/cuda-12.1.0/linux-64::nsight-compute-2023.1.0.15-0 
+
+The following packages will be UPDATED:
+
+  ca-certificates                     2023.05.30-h06a4308_0 --> 2024.12.31-h06a4308_0 
+  certifi                         2023.7.22-py311h06a4308_0 --> 2024.12.14-py311h06a4308_0 
+  conda-content-tru~ pkgs/main/noarch::conda-content-trust~ --> pkgs/main/linux-64::conda-content-trust-0.2.0-py311h06a4308_1 
+  openssl                                 1.1.1u-h7f8727e_0 --> 1.1.1w-h7f8727e_0 
+
+
+
+Downloading and Extracting Packages
+cuda-runtime-12.1.0  | 1 KB      |            |   0% 
+cuda-libraries-12.1. | 2 KB      |            |   0% [A
+
+libcufft-11.0.2.4    | 102.9 MB  |            |   0% [A[A
+
+
+libnpp-12.0.2.50     | 139.8 MB  |            |   0% [A[A[A
+
+
+
+libcusolver-11.4.4.5 | 98.3 MB   |            |   0% [A[A[A[A
+
+
+
+
+libcublas-12.1.0.26  | 329.0 MB  |            |   0% [A[A[A[A[A
+
+
+
+
+
+libcusparse-12.0.2.5 | 163.0 MB  |            |   0% [A[A[A[A[A[ADEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): conda.anaconda.org:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): conda.anaconda.org:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): conda.anaconda.org:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): conda.anaconda.org:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): conda.anaconda.org:443
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/libnpp-12.0.2.50-0.tar.bz2 HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/cuda-libraries-12.1.0-0.tar.bz2 HTTP/1.1" 200 None
+
+cuda-libraries-12.1. | 2 KB      | ########## | 100% [A
+cuda-libraries-12.1. | 2 KB      | ########## | 100% [ADEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/libcusolver-11.4.4.55-0.tar.bz2 HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/libcufft-11.0.2.4-0.tar.bz2 HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/cuda-runtime-12.1.0-0.tar.bz2 HTTP/1.1" 200 None
+cuda-runtime-12.1.0  | 1 KB      | ########## | 100% cuda-runtime-12.1.0  | 1 KB      | ########## | 100% DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/libcublas-12.1.0.26-0.tar.bz2 HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://conda.anaconda.org:443 "GET /nvidia/label/cuda-12.1.0/linux-64/libcusparse-12.0.2.55-0.tar.bz2 HTTP/1.1" 200 None
+
+
+libcufft-11.0.2.4    | 102.9 MB  | ########## | 100% [A[A
+
+libcufft-11.0.2.4    | 102.9 MB  | ########## | 100% [A[A
+
+
+
+libcusolver-11.4.4.5 | 98.3 MB   | ########## | 100% [A[A[A[A
+
+
+
+libcusolver-11.4.4.5 | 98.3 MB   | ########## | 100% [A[A[A[A
+
+
+libnpp-12.0.2.50     | 139.8 MB  | ########## | 100% [A[A[A
+
+
+libnpp-12.0.2.50     | 139.8 MB  | ########## | 100% [A[A[Aslurmstepd: error: *** JOB 9369509 ON gcn24 CANCELLED AT 2025-01-11T17:11:20 ***
+
+JOB STATISTICS
+==============
+Job ID: 9369509
+Cluster: snellius
+User/Group: mdragomir/mdragomir
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:02
+CPU Efficiency: 0.07% of 00:46:30 core-walltime
+Job Wall-clock time: 00:02:35
+Memory Utilized: 402.19 MB
+Memory Efficiency: 0.33% of 120.00 GB
