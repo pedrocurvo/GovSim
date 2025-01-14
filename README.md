@@ -80,6 +80,30 @@ To run the experiment fish_baseline_concurrent with gpt-4-turbo-2024-04-09:
 python3 -m simulation.main experiment=fish_baseline_concurrent llm.path=gpt-4-turbo-2024-04-09 llm.is_api=true
 ```
 
+### For MultiGov Experiences:
+
+To run the MultiGov experiments, you can use the following command:
+
+```
+python3 -m simulation.main \
+    llm.path="[model1, model2, model3, model4, model5]" \
+    llm.is_api="[bool, bool, bool, bool, bool]" \
+    llm.backend="[transformers, transformers, transformers, transformers, transformers]" \
+    experiment=<experiment_id> \
+    multigov=true
+```
+
+**Example**
+
+```
+python3 -m simulation.main \
+    llm.path="[deepseek-chat, deepseek-chat, deepseek-chat, deepseek-chat, gpt-4o-mini-2024-07-18]" \
+    llm.is_api="[true, true, true, true, true]" \
+    llm.backend="[transformers, transformers, transformers, transformers, transformers]" \
+    experiment=fish_baseline_concurrent \
+    multigov=true
+```
+
 ### For Hugging Face models:
 
 If you are running the `transformers` library, first you need to login in the Hugging Face API by running `huggingface-cli login`. To see more options of Hugging Face API, please refer to the [Hugging Face API documentation](https://huggingface.co/docs/huggingface_hub/en/guides/cli).
