@@ -24,7 +24,10 @@ def main(cfg: DictConfig):
     print(OmegaConf.to_yaml(cfg))
     set_seed(cfg.seed)
 
-    model = get_model(cfg.llm.path, cfg.llm.is_api, cfg.seed, cfg.llm.backend)
+    if cfg.multigov:
+        model = [ get_model(cfg.llm.path[i], cfg.llm.is_api[i], cfg.seed, cfg.llm.backend[i]) for i in range(len(cfg.llm.path)) ]
+    else:
+        model = get_model(cfg.llm.path, cfg.llm.is_api, cfg.seed, cfg.llm.backend)
     logger = WandbLogger(cfg.experiment.name, OmegaConf.to_object(cfg), debug=cfg.debug)
 
     experiment_storage = os.path.join(
@@ -32,15 +35,26 @@ def main(cfg: DictConfig):
         f"./results/{cfg.experiment.name}/{logger.run_name}",
     )
 
-    wrapper = ModelWandbWrapper(
-        model,
-        render=cfg.llm.render,
-        wanbd_logger=logger,
-        temperature=cfg.llm.temperature,
-        top_p=cfg.llm.top_p,
-        seed=cfg.seed,
-        is_api=cfg.llm.is_api,
-    )
+    if cfg.multigov:
+        wrapper = [ ModelWandbWrapper(
+            model[i],
+            render=cfg.llm.render,
+            wanbd_logger=logger,
+            temperature=cfg.llm.temperature,
+            top_p=cfg.llm.top_p,
+            seed=cfg.seed,
+            is_api=cfg.llm.is_api[i],
+        ) for i in range(len(cfg.llm.path)) ]
+    else:
+        wrapper = ModelWandbWrapper(
+            model,
+            render=cfg.llm.render,
+            wanbd_logger=logger,
+            temperature=cfg.llm.temperature,
+            top_p=cfg.llm.top_p,
+            seed=cfg.seed,
+            is_api=cfg.llm.is_api,
+        )
     embedding_model = EmbeddingModel(device="cpu")
 
     if cfg.experiment.scenario == "fishing":
@@ -50,6 +64,7 @@ def main(cfg: DictConfig):
             wrapper,
             embedding_model,
             experiment_storage,
+            multigov=cfg.multigov,
         )
     elif cfg.experiment.scenario == "sheep":
         run_scenario_sheep(
@@ -58,6 +73,7 @@ def main(cfg: DictConfig):
             wrapper,
             embedding_model,
             experiment_storage,
+            multigov=cfg.multigov,
         )
     elif cfg.experiment.scenario == "pollution":
         run_scenario_pollution(
@@ -66,6 +82,7 @@ def main(cfg: DictConfig):
             wrapper,
             embedding_model,
             experiment_storage,
+            multigov=cfg.multigov,
         )
     else:
         raise ValueError(f"Unknown experiment.scenario: {cfg.experiment.scenario}")
