@@ -13,7 +13,7 @@ from .store_prompts import (
 )
 
 
-class FishingStoreComponent(StoreComponent):
+class TrashStoreComponent(StoreComponent):
 
     def __init__(
         self,

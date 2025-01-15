@@ -16,7 +16,7 @@ from .utils import (
 )
 
 
-def prompt_action_choose_amount_of_fish_to_catch(
+def prompt_action_choose_amount_of_trash_to_take_out(
     model: ModelWandbWrapper,
     identity: PersonaIdentity,
     memories: list[str],
@@ -26,7 +26,7 @@ def prompt_action_choose_amount_of_fish_to_catch(
     interval: list[int],
     consider_identity_persona: bool = True,
 ):
-    lm = model.start_chain(identity.name, "fishing_cognition_act", "choose_act_options")
+    lm = model.start_chain(identity.name, "trash_cognition_act", "choose_act_options")
 
     with user():
         lm += f"{get_sytem_prompt(identity)}\n"

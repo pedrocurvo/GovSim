@@ -24,20 +24,20 @@ from simulation.scenarios.common.environment import HarvestingObs
 from simulation.utils import ModelWandbWrapper
 
 from .cognition import (
-    FishingActComponent,
-    FishingConverseComponent,
-    FishingPlanComponent,
-    FishingReflectComponent,
-    FishingStoreComponent,
+    TrashActComponent,
+    TrashConverseComponent,
+    TrashPlanComponent,
+    TrashReflectComponent,
+    TrashStoreComponent,
 )
 
 
-class FishingPersona(PersonaAgent):
+class TrashPersona(PersonaAgent):
     last_collected_resource_num: int
-    other_personas: dict[str, "FishingPersona"]
+    other_personas: dict[str, "TrashPersona"]
 
-    converse: FishingConverseComponent
-    act: FishingActComponent
+    converse: TrashConverseComponent
+    act: TrashActComponent
 
     def __init__(
         self,
@@ -48,11 +48,11 @@ class FishingPersona(PersonaAgent):
         memory_cls: type[AssociativeMemory] = AssociativeMemory,
         perceive_cls: type[PerceiveComponent] = PerceiveComponent,
         retrieve_cls: type[RetrieveComponent] = RetrieveComponent,
-        store_cls: type[FishingStoreComponent] = FishingStoreComponent,
-        reflect_cls: type[FishingReflectComponent] = FishingReflectComponent,
-        plan_cls: type[FishingPlanComponent] = FishingPlanComponent,
-        act_cls: type[FishingActComponent] = FishingActComponent,
-        converse_cls: type[FishingConverseComponent] = FishingConverseComponent,
+        store_cls: type[TrashStoreComponent] = TrashStoreComponent,
+        reflect_cls: type[TrashReflectComponent] = TrashReflectComponent,
+        plan_cls: type[TrashPlanComponent] = TrashPlanComponent,
+        act_cls: type[TrashActComponent] = TrashActComponent,
+        converse_cls: type[TrashConverseComponent] = TrashConverseComponent,
     ) -> None:
         super().__init__(
             cfg,
@@ -80,7 +80,7 @@ class FishingPersona(PersonaAgent):
             # Stage 1. Pond situation / Stage 2. Fishermen’s decisions
             retireved_memory = self.retrieve.retrieve([obs.current_location], 10)
             if obs.current_resource_num > 0:
-                num_resource, html_interactions = self.act.choose_how_many_fish_to_chat(
+                num_resource, html_interactions = self.act.choose_how_much_trash_to_chat(
                     retireved_memory,
                     obs.current_location,
                     obs.current_time,
@@ -102,7 +102,7 @@ class FishingPersona(PersonaAgent):
                     "lake",
                     num_resource,
                     stats={},
-                    html_interactions="<strong>Framework<strong/>: no fish to catch",
+                    html_interactions="<strong>Framework<strong/>: no trash to take out",
                 )
         elif obs.current_location == "lake" and obs.phase == "pool_after_harvesting":
             # dummy action to register observation
