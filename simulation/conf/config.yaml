@@ -26,3 +26,4 @@ hydra:
     - ./simulation/scenarios/fishing/conf
     - ./simulation/scenarios/sheep/conf
     - ./simulation/scenarios/pollution/conf
+    - ./simulation/scenarios/trash/conf

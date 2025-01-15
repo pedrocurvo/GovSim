@@ -17,6 +17,7 @@ from .persona import EmbeddingModel
 from .scenarios.fishing.run import run as run_scenario_fishing
 from .scenarios.pollution.run import run as run_scenario_pollution
 from .scenarios.sheep.run import run as run_scenario_sheep
+from .scenarios.trash.run import run as run_scenario_trash
 
 
 @hydra.main(version_base=None, config_path="conf", config_name="config")
@@ -61,6 +62,14 @@ def main(cfg: DictConfig):
         )
     elif cfg.experiment.scenario == "pollution":
         run_scenario_pollution(
+            cfg.experiment,
+            logger,
+            wrapper,
+            embedding_model,
+            experiment_storage,
+        )
+    elif cfg.experiment.scenario == "trash":
+        run_scenario_trash(
             cfg.experiment,
             logger,
             wrapper,

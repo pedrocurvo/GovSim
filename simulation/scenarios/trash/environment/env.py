@@ -39,13 +39,13 @@ class TrashConcurrentEnv(ConcurrentEnv):
         wanted = self.internal_global_state["wanted_resource"][agent]
         caught = self.internal_global_state["last_collected_resource"][agent]
         agent_name = self.agent_id_to_name[agent]
-        return units_trash(agent_name, wanted, caught)
+        return units_caught(agent_name, wanted, caught)
 
     def _prompt_universalization(self, sustainability_threshold):
         return univ(sustainability_threshold)
 
 
-class FishingPerturbationEnv(PerturbationEnv):
+class TrashPerturbationEnv(PerturbationEnv):
     def __init__(
         self, cfg: DictConfig, experiment_storage: str, map_id_to_name: dict[str, str]
     ) -> None:
