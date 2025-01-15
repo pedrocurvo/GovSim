@@ -20,6 +20,7 @@ from .scenarios.sheep.run import run as run_scenario_sheep
 from .scenarios.fishing_japanese.run import run as run_scenario_fishing_japanese
 
 
+from .scenarios.trash.run import run as run_scenario_trash
 
 
 @hydra.main(version_base=None, config_path="conf", config_name="config")
@@ -156,6 +157,14 @@ def main(cfg: DictConfig):
             logger,
             wrappers,
             wrapper_framework,
+            embedding_model,
+            experiment_storage,
+        )
+    elif cfg.experiment.scenario == "trash":
+        run_scenario_trash(
+            cfg.experiment,
+            logger,
+            wrapper,
             embedding_model,
             experiment_storage,
         )

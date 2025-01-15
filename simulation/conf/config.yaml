@@ -30,3 +30,4 @@ hydra:
     - ./simulation/scenarios/sheep/conf
     - ./simulation/scenarios/pollution/conf
     - ./simulation/scenarios/fishing_japanese/conf
+    - ./simulation/scenarios/trash/conf

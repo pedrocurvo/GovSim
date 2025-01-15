@@ -1,1 +1,1 @@
-from .env import FishingConcurrentEnv, FishingPerturbationEnv
+from .env import TrashConcurrentEnv, TrashPerturbationEnv

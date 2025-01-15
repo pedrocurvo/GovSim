@@ -9,7 +9,7 @@ from .reflect_prompts import (
 )
 
 
-class FishingReflectComponent(ReflectComponent):
+class TrashReflectComponent(ReflectComponent):
 
     def __init__(self, model: ModelWandbWrapper):
         super().__init__(model)
