@@ -117,20 +117,20 @@ def get_sytem_prompt(persona):
 
 
 def get_sytem_prompt_v1(persona):
-    persona_names = ["John", "Kate", "Jack", "Emma", "Luke"]
+    persona_names = ["Himari", "Rin", "Tsumugi", "Yua", "Yuina"]
     persona_names.remove(persona.name)
     list_string_persona_name = ", ".join(persona_names)
     text = (
-        f"You are {persona.name}, a fisherman, and you fish each month in a lake along with four other fishermen ({list_string_persona_name})."
-        " The lake has a population capacity of 100 tons of fish."
-        " Each month, each fisherman decides how many fish to take out of the lake between 0 and 100 tons."
-        " At the end of the month, the remaining fish reproduce and double up to the population capacity."
-        " So if there are 60 tons of fish remaining, there will be 100 tons after reproduction, or if there are 20 tons of fish remaining,"
-        " there will be 40 tons of fish after reproduction."
-        " For each ton of fish caught, a fisherman earns one thousand dollars."
-        " Each fisherman's goal is to optimize their income in the long run over many months."
-        " At the end of each month, the number of fish caught by each fisherman will be revealed, and the fishermen will have an opportunity to communicate with each other."
-        " You can use this as an opportunity to negotiate and persuade others to influence their behavior in the next month."
+        f"あなたは{persona.name}という漁師で、他の4人の漁師（{list_string_persona_name}）と一緒に毎月湖で漁をしています。"
+        " 湖には100トンの魚が生息している。"
+        " 毎月、各漁師は0トンから100トンの間で湖から魚を何匹取るかを決める。"
+        " 月末になると、残った魚は繁殖し、個体数が倍増する。"
+        " つまり、60トンの魚が残っていれば、繁殖後は100トン、20トンの魚が残っていれば100トンになる、"
+        " 繁殖後の魚は40トンになる。"
+        " 漁師は1トンの魚を獲るごとに1,000ドルを稼ぐ。"
+        " 各漁師の目標は、何カ月にもわたって長期的に収入を最適化することだ。"
+        " 毎月末には、各漁師が釣った魚の数が発表され、漁師同士のコミュニケーションの場となる。"
+        " これを機会に、来月の相手の行動に影響を与えるよう交渉し、説得することができる。"
     )
 
     if persona.goals != "":
@@ -162,18 +162,17 @@ def get_sytem_prompt_v3(persona):
 
 
 def get_sytem_prompt_v3_nocom(persona):
-    persona_names = ["John", "Kate", "Jack", "Emma", "Luke"]
+    persona_names = ["Himari", "Rin", "Tsumugi", "Yua", "Yuina"]
     persona_names.remove(persona.name)
     list_string_persona_name = ", ".join(persona_names)
     text = (
-        f"You are {persona.name}, a fisherman, and you fish every month in a lake along with four other fishermen ({list_string_persona_name})."
-        " The lake has a carrying capacity of 100 tons of fish."
-        " At the beginning of each month, each fisherman decides how many fish between 0 and 100 tons to catch from the lake, and that amount is then removed from the lake."
-        " At the end of the month, the remaining fish will reproduce and double once, up to the carrying capacity."
-        " For every ton of fish caught, a fisherman earns one thousand dollars."
-        " Each fisherman's goal is to optimize his income in the long run over many months."
-        " For example, if there are 90 tons of fish at the beginning of the month and the five fishermen catch a total of 30 fish,"
-        " there will be 60 tons of fish left at the end of the month before reproduction, and 100 tons after reproduction."
+        f"あなたは{persona.name}という漁師で、他の4人の漁師（{list_string_persona_name}）と一緒に毎月湖で漁をしている。"
+        "湖には100トンの魚が泳いでいる。"
+        "各月の初めに、各漁師は湖から0トンから100トンの間で何匹の魚を獲るかを決め、その量を湖から取り除きます。"
+        "月末になると、残った魚は繁殖し、倍増する。"
+        "1トンの魚を獲るごとに、漁師は1,000ドルを得る。"
+        "各漁師の目標は、何カ月にもわたって長期的に収入を最適化することである。"
+        "例えば、月初に90トンの魚があり、5人の漁師が合計30トンを獲った場合、月末には繁殖前で60トン、繁殖後で100トンの魚が残る。"
     )
 
     if persona.goals != "":
