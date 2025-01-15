@@ -1,16 +1,16 @@
-name: fishing_${code_version}/${group_name}
-scenario: fishing
+name: trash_${code_version}/${group_name}
+scenario: trash
 
 defaults:
-  - persona@personas.persona_0: baseline_fisherman
-  - persona@personas.persona_1: baseline_fisherman
-  - persona@personas.persona_2: baseline_fisherman
-  - persona@personas.persona_3: baseline_fisherman
-  - persona@personas.persona_4: baseline_fisherman
+  - persona@personas.persona_0: baseline_roommate
+  - persona@personas.persona_1: baseline_roommate
+  - persona@personas.persona_2: baseline_roommate
+  - persona@personas.persona_3: baseline_roommate
+  - persona@personas.persona_4: baseline_roommate
 
 env:
-  name: fish_baseline_concurrent
-  class_name: fishing_perturbation_concurrent_env # use to select which code 
+  name: trash_baseline_concurrent
+  class_name: trash_perturbation_concurrent_env # use to select which code 
   max_num_rounds: 12
   initial_resource_in_pool: 100
   poupulation_change_after_round: double_100_cap

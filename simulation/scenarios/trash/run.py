@@ -7,7 +7,7 @@ from simulation.persona import EmbeddingModel
 from simulation.persona.common import PersonaIdentity
 from simulation.utils import ModelWandbWrapper
 
-from .environment import FishingConcurrentEnv, FishingPerturbationEnv
+from .environment import TrashConcurrentEnv, TrashPerturbationEnv
 
 
 def run(
@@ -18,7 +18,7 @@ def run(
     experiment_storage: str,
 ):
     if cfg.agent.agent_package == "persona_v3":
-        from .agents.persona_v3 import FishingPersona
+        from .agents.persona_v3 import TrashPersona
         from .agents.persona_v3.cognition import utils as cognition_utils
 
         if cfg.agent.system_prompt == "v3":
@@ -35,7 +35,7 @@ def run(
         raise ValueError(f"Unknown agent package: {cfg.agent.agent_package}")
 
     personas = {
-        f"persona_{i}": FishingPersona(
+        f"persona_{i}": TrashPersona(
             cfg.agent,
             wrapper,
             embedding_model,
@@ -67,10 +67,10 @@ def run(
             # also add self reference, for conversation
             personas[persona].add_reference_to_other_persona(personas[other_persona])
 
-    if cfg.env.class_name == "fishing_perturbation_env":
-        env = FishingPerturbationEnv(cfg.env, experiment_storage, agent_id_to_name)
-    elif cfg.env.class_name == "fishing_perturbation_concurrent_env":
-        env = FishingConcurrentEnv(cfg.env, experiment_storage, agent_id_to_name)
+    if cfg.env.class_name == "trash_perturbation_env":
+        env = TrashPerturbationEnv(cfg.env, experiment_storage, agent_id_to_name)
+    elif cfg.env.class_name == "trash_perturbation_concurrent_env":
+        env = TrashConcurrentEnv(cfg.env, experiment_storage, agent_id_to_name)
     else:
         raise ValueError(f"Unknown environment class: {cfg.env.class_name}")
     agent_id, obs = env.reset()

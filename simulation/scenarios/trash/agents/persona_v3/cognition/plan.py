@@ -3,6 +3,6 @@ from simulation.utils import ModelWandbWrapper
 from pathfinder import assistant, system, user
 
 
-class FishingPlanComponent(PlanComponent):
+class TrashPlanComponent(PlanComponent):
     def __init__(self, model: ModelWandbWrapper):
         super().__init__(model)

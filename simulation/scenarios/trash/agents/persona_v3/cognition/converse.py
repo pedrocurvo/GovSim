@@ -13,7 +13,7 @@ from .converse_prompts import (
 from .reflect_prompts import prompt_find_harvesting_limit_from_conversation
 
 
-class FishingConverseComponent(ConverseComponent):
+class TrashConverseComponent(ConverseComponent):
     def __init__(
         self,
         model: ModelWandbWrapper,
@@ -34,7 +34,7 @@ class FishingConverseComponent(ConverseComponent):
 
         html_interactions = []
 
-        # Inject fake conversation about how many fish each person caught
+        # Inject fake conversation about how much trash each person took out
         if (
             self.cfg.inject_resource_observation
             and self.cfg.inject_resource_observation_strategy == "individual"

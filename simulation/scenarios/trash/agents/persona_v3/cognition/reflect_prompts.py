@@ -139,7 +139,7 @@ def prompt_find_harvesting_limit_from_conversation(
         lm += reasoning_steps_prompt()
         lm += ' Put the final answer after "Answer:".'
 
-    option_fish_num = range(0, 101)
+    option_trash_num = range(0, 101)
     with assistant():
         lm = model.gen(
             lm,

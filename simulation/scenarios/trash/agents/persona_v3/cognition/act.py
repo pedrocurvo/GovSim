@@ -4,11 +4,11 @@ from simulation.persona.cognition.act import ActComponent
 from simulation.utils import ModelWandbWrapper
 from pathfinder import assistant, system, user
 
-from .act_prompts import prompt_action_choose_amount_of_fish_to_catch
+from .act_prompts import prompt_action_choose_amount_of_trash_to_take_out
 from .utils import get_universalization_prompt
 
 
-class FishingActComponent(ActComponent):
+class TrashActComponent(ActComponent):
     """
 
     We have to options here:
@@ -20,7 +20,7 @@ class FishingActComponent(ActComponent):
         super().__init__(model)
         self.cfg = cfg
 
-    def choose_how_many_fish_to_chat(
+    def choose_how_much_trash_to_chat(
         self,
         retrieved_memories: list[str],
         current_location: str,
@@ -31,7 +31,7 @@ class FishingActComponent(ActComponent):
     ):
         if self.cfg.universalization_prompt:
             context += get_universalization_prompt(overusage_threshold)
-        res, html = prompt_action_choose_amount_of_fish_to_catch(
+        res, html = prompt_action_choose_amount_of_trash_to_take_out(
             self.model,
             self.persona.identity,
             retrieved_memories,
