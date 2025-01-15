@@ -33,22 +33,22 @@ def prompt_action_choose_amount_of_fish_to_catch(
         lm += location_time_info(current_location, current_time)
         lm += memory_prompt(identity, memories)
         lm += f"\n"
-        lm += f"Task: With a fishing range set between {interval[0]}-{interval[-1]}, how many tons of fish would you catch this month? "
+        lm += f" タスク: 釣りの範囲を {interval[0]}-{interval[-1]}の間に設定して、今月は何トンの魚を釣りますか？ "
         lm += reasoning_steps_prompt()
-        lm += ' Put the final answer after "Answer:", example Answer: N tons.'
+        lm += ' 回答: "の後に最終的な答えを入れる, 例 回答: Nトン.'
 
     with assistant():
         lm = model.gen(
             lm,
             "reasoning",
-            stop_regex=r"Answer:|So, the answer is:|\*\*Answer\*\*:",
+            stop_regex=r"回答:|だから、答えはこうだ。:|\*\*回答\*\*:",
             save_stop_text=True,
         )
         lm = model.find(
             lm,
             regex=r"\d+",
             default_value="0",
-            stop_regex=f"tons",
+            stop_regex=f"トン",
             name="option",
         )
         option = int(lm["option"])

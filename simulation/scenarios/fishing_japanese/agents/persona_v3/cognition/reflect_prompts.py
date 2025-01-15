@@ -134,7 +134,7 @@ def prompt_find_harvesting_limit_from_conversation(
         lm += f"{conversation_to_string_with_dash(conversation)}\n"
         lm += "会話の中で合意された一人当たりの具体的な漁獲制限をご記入ください。制限に合意されなかった場合は、該当なしとお答えください。"
         lm += reasoning_steps_prompt()
-        lm += ' 最終的な答えは「Answer:」の後に書く。'
+        lm += ' 最終的な答えは「回答:」の後に書く。'
 
     option_fish_num = range(0, 101)
     with assistant():
