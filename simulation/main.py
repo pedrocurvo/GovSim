@@ -17,6 +17,9 @@ from .persona import EmbeddingModel
 from .scenarios.fishing.run import run as run_scenario_fishing
 from .scenarios.pollution.run import run as run_scenario_pollution
 from .scenarios.sheep.run import run as run_scenario_sheep
+from .scenarios.fishing_japanese.run import run as run_scenario_fishing_japanese
+
+
 
 
 @hydra.main(version_base=None, config_path="conf", config_name="config")
@@ -67,6 +70,15 @@ def main(cfg: DictConfig):
             embedding_model,
             experiment_storage,
         )
+    elif cfg.experiment.scenario == "fishing_japanese":
+        run_scenario_fishing_japanese(
+            cfg.experiment,
+            logger,
+            wrapper,
+            embedding_model,
+            experiment_storage,
+        )
+
     else:
         raise ValueError(f"Unknown experiment.scenario: {cfg.experiment.scenario}")
 
