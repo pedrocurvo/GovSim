@@ -132,7 +132,7 @@ def prompt_find_harvesting_limit_from_conversation(
         )
         lm += f"\n\会話だ：\n"
         lm += f"{conversation_to_string_with_dash(conversation)}\n"
-        lm += "会話の中で合意された一人当たりの具体的な漁獲制限をご記入ください。制限に合意されなかった場合は、該当なしとお答えください。"
+        lm += "会話の中で合意された一人当たりの具体的な漁獲制限をご記入ください。制限に合意されなかった場合は、N/A とお答えください。"
         lm += reasoning_steps_prompt()
         lm += ' 最終的な答えは「回答:」の後に書く。'
 
