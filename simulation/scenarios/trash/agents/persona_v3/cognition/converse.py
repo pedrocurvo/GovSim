@@ -45,14 +45,14 @@ class FishingConverseComponent(ConverseComponent):
                     (
                         p.identity,
                         (
-                            f"This month, I caught {agent_resource_num[p.agent_id]} tons"
-                            " of fish!"
+                            f"This month, I took out {agent_resource_num[p.agent_id]} units"
+                            " of trash!"
                         ),
                     ),
                 )
                 html_interactions.append(
                     "<strong>Framework</strong>:  This month, I caught"
-                    f" {agent_resource_num[p.agent_id]} tons of fish!"
+                    f" {agent_resource_num[p.agent_id]} units of trash!"
                 )
         elif (
             self.cfg.inject_resource_observation
@@ -62,12 +62,12 @@ class FishingConverseComponent(ConverseComponent):
             report = ""
             for persona in target_personas:
                 p = self.other_personas[persona.name]
-                report += f"{p.identity.name} caught {agent_resource_num[p.agent_id]} tons of fish. "
+                report += f"{p.identity.name} caught {agent_resource_num[p.agent_id]} units of trash. "
             current_conversation.append(
                 (
                     PersonaIdentity("framework", "Mayor"),
                     (
-                        f"Ladies and gentlemen, let me give you the monthly fishing report. {report}"
+                        f"Ladies and gentlemen, let me give you the monthly trash report. {report}"
                     ),
                 ),
             )
@@ -136,8 +136,8 @@ class FishingConverseComponent(ConverseComponent):
             if resource_limit is not None:
                 p.store.store_thought(
                     (
-                        "The community agreed on a maximum limit of"
-                        f" {resource_limit} tons of fish per person."
+                        "The community agreed on a minimum limit of"
+                        f" {resource_limit} units of trash per person."
                     ),
                     self.persona.current_time,
                     always_include=True,
