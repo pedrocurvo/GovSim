@@ -127,15 +127,15 @@ def prompt_find_harvesting_limit_from_conversation(
 
     with user():
         lm += (
-            "In the following conversation, the participants discuss their fishing"
-            " activities and activities and the weight of fish they caught. Determine"
-            " whether there was an explicit agreement on a concrete fishing limit. Look"
-            " for direct mention or agreement on a numerical catch limit that the group"
+            "In the following conversation, the participants discuss their trash"
+            " activities and the amount of trash they took out. Determine"
+            " whether there was an explicit agreement on a concrete trash limit. Look"
+            " for direct mention or agreement on a numerical trash limit that the group"
             " agreed to keep during this conversation."
         )
         lm += f"\n\nConversation:\n"
         lm += f"{conversation_to_string_with_dash(conversation)}\n"
-        lm += "Please provide the specific fishing limit per person as agreed upon in the conversation, if no limit was agreed upon, please answer N/A. "
+        lm += "Please provide the specific trash limit per person as agreed upon in the conversation, if no limit was agreed upon, please answer N/A. "
         lm += reasoning_steps_prompt()
         lm += ' Put the final answer after "Answer:".'
 

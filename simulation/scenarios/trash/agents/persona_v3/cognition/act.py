@@ -12,8 +12,8 @@ class FishingActComponent(ActComponent):
     """
 
     We have to options here:
-    - choose at one time-step how many fish to chat
-    - choose at one time-strep whether to fish one more time
+    - choose at one time-step how many trash units to chat
+    - choose at one time-strep whether to take trash out one more time
     """
 
     def __init__(self, model: ModelWandbWrapper, cfg):

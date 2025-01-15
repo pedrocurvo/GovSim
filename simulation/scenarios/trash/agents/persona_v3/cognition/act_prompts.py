@@ -33,9 +33,9 @@ def prompt_action_choose_amount_of_fish_to_catch(
         lm += location_time_info(current_location, current_time)
         lm += memory_prompt(identity, memories)
         lm += f"\n"
-        lm += f"Task: With a fishing range set between {interval[0]}-{interval[-1]}, how many tons of fish would you catch this month? "
+        lm += f"Task: With a trash range set between {interval[0]}-{interval[-1]}, how many units of trash will you take out this month? "
         lm += reasoning_steps_prompt()
-        lm += ' Put the final answer after "Answer:", example Answer: N tons.'
+        lm += ' Put the final answer after "Answer:", example Answer: N units.'
 
     with assistant():
         lm = model.gen(
