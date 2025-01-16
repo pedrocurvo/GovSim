@@ -60,45 +60,25 @@ def main(cfg: DictConfig):
         )
     embedding_model = EmbeddingModel(device="cpu")
 
-    if cfg.experiment.scenario == "fishing":
-        run_scenario_fishing(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-            multigov=cfg.multigov,
-        )
-    elif cfg.experiment.scenario == "sheep":
-        run_scenario_sheep(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-            multigov=cfg.multigov,
-        )
-    elif cfg.experiment.scenario == "pollution":
-        run_scenario_pollution(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-            multigov=cfg.multigov,
-        )
-    elif cfg.experiment.scenario == "fishing_japanese":
-        run_scenario_fishing_japanese(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-            multigov=cfg.multigov,
-        )
+    scenario_runners = {
+        "fishing": run_scenario_fishing,
+        "sheep": run_scenario_sheep,
+        "pollution": run_scenario_pollution,
+        "fishing_japanese": run_scenario_fishing_japanese,
+    }
 
+    scenario = cfg.experiment.scenario
+    if scenario in scenario_runners:
+        scenario_runners[scenario](
+            cfg.experiment,
+            logger,
+            wrapper,
+            embedding_model,
+            experiment_storage,
+            multigov=cfg.multigov,
+        )
     else:
-        raise ValueError(f"Unknown experiment.scenario: {cfg.experiment.scenario}")
+        raise ValueError(f"Unknown experiment.scenario: {scenario}")
 
     hydra_log_path = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
     shutil.copytree(f"{hydra_log_path}/.hydra/", f"{experiment_storage}/.hydra/")
