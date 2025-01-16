@@ -1,4 +1,4 @@
-# TEST
+
 def list_to_string_with_dash(list_of_strings: list[str]) -> str:
     res = ""
     for s in list_of_strings:
