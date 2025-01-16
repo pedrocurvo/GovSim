@@ -94,6 +94,7 @@ def main(cfg: DictConfig):
             wrapper,
             embedding_model,
             experiment_storage,
+            multigov=cfg.multigov,
         )
 
     else:

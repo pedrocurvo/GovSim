@@ -15,6 +15,7 @@ def run(
     wrapper: ModelWandbWrapper,
     embedding_model: EmbeddingModel,
     experiment_storage: str,
+    multigov: bool = False,
 ):
     if cfg.agent.agent_package == "persona_v3":
         from .agents.persona_v3 import PollutionPersona
@@ -33,15 +34,26 @@ def run(
     else:
         raise ValueError(f"Unknown agent package: {cfg.agent.agent_package}")
 
-    personas = {
-        f"persona_{i}": PollutionPersona(
-            cfg.agent,
-            wrapper,
-            embedding_model,
-            os.path.join(experiment_storage, f"persona_{i}"),
-        )
-        for i in range(5)
-    }
+    if multigov:
+        personas = {
+            f"persona_{i}": PollutionPersona(
+                cfg.agent,
+                wrapper[i],
+                embedding_model,
+                os.path.join(experiment_storage, f"persona_{i}"),
+            )
+            for i in range(5)
+        }
+    else:
+        personas = {
+            f"persona_{i}": PollutionPersona(
+                cfg.agent,
+                wrapper,
+                embedding_model,
+                os.path.join(experiment_storage, f"persona_{i}"),
+            )
+            for i in range(5)
+        }
 
     # NOTE persona characteristics, up to design choices
     num_personas = cfg.personas.num
