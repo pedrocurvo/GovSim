@@ -27,7 +27,10 @@ def main(cfg: DictConfig):
     print(OmegaConf.to_yaml(cfg))
     set_seed(cfg.seed)
 
-    model = get_model(cfg.llm.path, cfg.llm.is_api, cfg.seed, cfg.llm.backend)
+    if cfg.multigov:
+        model = [ get_model(cfg.llm.path[i], cfg.llm.is_api[i], cfg.seed, cfg.llm.backend[i]) for i in range(len(cfg.llm.path)) ]
+    else:
+        model = get_model(cfg.llm.path, cfg.llm.is_api, cfg.seed, cfg.llm.backend)
     logger = WandbLogger(cfg.experiment.name, OmegaConf.to_object(cfg), debug=cfg.debug)
 
     experiment_storage = os.path.join(
@@ -35,52 +38,47 @@ def main(cfg: DictConfig):
         f"./results/{cfg.experiment.name}/{logger.run_name}",
     )
 
-    wrapper = ModelWandbWrapper(
-        model,
-        render=cfg.llm.render,
-        wanbd_logger=logger,
-        temperature=cfg.llm.temperature,
-        top_p=cfg.llm.top_p,
-        seed=cfg.seed,
-        is_api=cfg.llm.is_api,
-    )
+    if cfg.multigov:
+        wrapper = [ ModelWandbWrapper(
+            model[i],
+            render=cfg.llm.render,
+            wanbd_logger=logger,
+            temperature=cfg.llm.temperature,
+            top_p=cfg.llm.top_p,
+            seed=cfg.seed,
+            is_api=cfg.llm.is_api[i],
+        ) for i in range(len(cfg.llm.path)) ]
+    else:
+        wrapper = ModelWandbWrapper(
+            model,
+            render=cfg.llm.render,
+            wanbd_logger=logger,
+            temperature=cfg.llm.temperature,
+            top_p=cfg.llm.top_p,
+            seed=cfg.seed,
+            is_api=cfg.llm.is_api,
+        )
     embedding_model = EmbeddingModel(device="cpu")
 
-    if cfg.experiment.scenario == "fishing":
-        run_scenario_fishing(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-        )
-    elif cfg.experiment.scenario == "sheep":
-        run_scenario_sheep(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-        )
-    elif cfg.experiment.scenario == "pollution":
-        run_scenario_pollution(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-        )
-    elif cfg.experiment.scenario == "fishing_japanese":
-        run_scenario_fishing_japanese(
-            cfg.experiment,
-            logger,
-            wrapper,
-            embedding_model,
-            experiment_storage,
-        )
+    scenario_runners = {
+        "fishing": run_scenario_fishing,
+        "sheep": run_scenario_sheep,
+        "pollution": run_scenario_pollution,
+        "fishing_japanese": run_scenario_fishing_japanese,
+    }
 
+    scenario = cfg.experiment.scenario
+    if scenario in scenario_runners:
+        scenario_runners[scenario](
+            cfg.experiment,
+            logger,
+            wrapper,
+            embedding_model,
+            experiment_storage,
+            multigov=cfg.multigov,
+        )
     else:
-        raise ValueError(f"Unknown experiment.scenario: {cfg.experiment.scenario}")
+        raise ValueError(f"Unknown experiment.scenario: {scenario}")
 
     hydra_log_path = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
     shutil.copytree(f"{hydra_log_path}/.hydra/", f"{experiment_storage}/.hydra/")

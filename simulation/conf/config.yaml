@@ -11,6 +11,7 @@ llm:
 
 seed: 42
 debug: false
+multigov: false
 
 # Ideally we would only need to change the following two lines to run a different experiments
   
