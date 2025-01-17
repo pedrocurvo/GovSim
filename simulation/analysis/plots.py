@@ -17,7 +17,8 @@ def compute_survival_months_stats(df):
     for col in df.columns:
         if col not in ["x", "round"]:
             # Check for the first occurrence of 0 or NaN
-            first_invalid_index = df[df[col].isna() | (df[col] < 5)].index.min()
+            # IDEA: collapse should not happen in the first month but it starts with 100 > 95 so let's skip the first month
+            first_invalid_index = df[df[col].index != 0 and (df[col].isna() | (df[col] > 95))].index.min()
 
             if pd.notna(first_invalid_index):
                 # Print the round number of the first occurrence
@@ -333,6 +334,11 @@ def get_figures_group(
             "fig_num_resource_yaxis_title_not_beg": f"% unpolluted water",
             "fig_num_resource_yaxis_title_beg": f"% unpoll. water after production",
         },
+        "trash": {
+            "fig_num_resource_title": f"Trash units in the house over time",
+            "fig_num_resource_yaxis_title_not_beg": f"units of trash",
+            "fig_num_resource_yaxis_title_beg": f"#units of trash after cleaning",
+        },
     }
     if "fish" in selected_groups[0]:
         leggend_info = leggend_info["fish"]
@@ -340,6 +346,8 @@ def get_figures_group(
         leggend_info = leggend_info["sheep"]
     elif "pollution" in selected_groups[0]:
         leggend_info = leggend_info["pollution"]
+    elif "trash" in selected_groups[0]:
+        leggend_info = leggend_info["trash"]
     else:
         raise ValueError("Group not found")
 
