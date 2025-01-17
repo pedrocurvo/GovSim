@@ -42,22 +42,22 @@ def prompt_converse_utterance_in_group(
         # lm += f"Current context: {current_context}\n\n"
         # Describe the group chat scenario
         lm += (
-            f"シナリオ: {list_to_comma_string([t.name for t in target_personas])}"
-            "さんはグループチャットに参加している。"
+            f"シナリオ: {list_to_comma_string([t.name for t in target_personas])}さんが"
+            "グループチャットに参加している。"
         )
         lm += "\nこれまでの会話:\n"
         lm += f"{conversation_to_string_with_dash(current_conversation)}\n\n"
         # Define the task for the language model
         lm += (
-            f"タスク: グループチャットで次に何を話す？ "
+            f"タスク: グループチャットで次に何を話す？"
             "会話が自然に流れ、繰り返しがないようにする。 "
-            "あなたの返答が会話を完結させるかどうかを判断する。 "
+            "あなたの返答が会話を完結させるかどうかを判断する。"
             "そうでない場合は、次のスピーカーを指名する。\n\n"
         )
         # Define the format for the output
-        REPONSE = "反応だ： "
-        ANSWER_STOP = "私による会話の結論： "
-        NEXT_SPEAKER = "次のスピーカー "
+        REPONSE = "反応: "
+        ANSWER_STOP = "私が会話を終える場合の結論: "
+        NEXT_SPEAKER = "次に話す人: "
 
         lm += "出力フォーマット：\n"
         lm += REPONSE + "[埋める]\n"

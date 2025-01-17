@@ -74,7 +74,7 @@ def prompt_planning_thought_on_conversation(
 
     with user():
         lm += f"{get_sytem_prompt(persona)}\n"
-        lm += f"会話だ：\n"
+        lm += f"会話：\n"
         lm += f"{conversation_to_string_with_dash(conversation)}\n"
         lm += (
             "会話の中で、プランニングのために覚えておく必要があることがあれば、"
@@ -99,7 +99,7 @@ def prompt_memorize_from_conversation(
 
     with user():
         lm += f"{get_sytem_prompt(persona)}\n"
-        lm += f"会話だ：\n"
+        lm += f"会話：\n"
         lm += f"{conversation_to_string_with_dash(conversation)}\n"
         lm += (
             "会話の中で、プランニングのために覚えておく必要があることがあれば、"
@@ -130,7 +130,7 @@ def prompt_find_harvesting_limit_from_conversation(
             "この会話の中で、グループが守ることに合意した漁獲制限の数値について、"
             "直接的な言及や合意があったかどうかを探してください。"
         )
-        lm += f"\n\会話だ：\n"
+        lm += f"\n\会話：\n"
         lm += f"{conversation_to_string_with_dash(conversation)}\n"
         lm += "会話の中で合意された一人当たりの具体的な漁獲制限をご記入ください。制限に合意されなかった場合は、N/A とお答えください。"
         lm += reasoning_steps_prompt()
