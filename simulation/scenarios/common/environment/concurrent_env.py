@@ -420,13 +420,13 @@ class ConcurrentEnv:
                 self.save_log()
                 self.num_round += 1
                 self.phase = self._phase_selector.next()
+                print(self.internal_global_state["resource_in_pool"])
 
                 # We want to see also the discussion in case no fish remain
                 self.terminations = {
                     agent: (
-                        (self.num_round > 0 and
-                        self.internal_global_state["resource_in_pool"]
-                        > 95) # TRASH ONLY, otherwise < 5  # less than 5 fish remain, so we collapse
+                        (self.internal_global_state["resource_in_pool"] > 45)
+                        # TRASH ONLY, otherwise < 5  # less than 5 fish remain, so we collapse
                         or self.num_round >= self.cfg.max_num_rounds
                     )
                     for agent in self.agents
