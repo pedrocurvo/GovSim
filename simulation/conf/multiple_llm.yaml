@@ -2,9 +2,9 @@ code_version: v7.0
 group_name: ''
 
 weak_model:
-  path: Qwen/Qwen2.5-7B-Instruct
+  path: gpt-4o-mini
   backend: transformers
-  is_api: false
+  is_api: true
   render: false
   temperature: 0.0
   top_p: 1.0
@@ -14,9 +14,9 @@ weak_model:
 
 
 strong_model:
-  path: Qwen/Qwen2.5-Math-7B-Instruct
+  path: deepseek-chat
   backend: transformers
-  is_api: false
+  is_api: true
   render: false
   temperature: 0.0
   top_p: 1.0
