@@ -44,6 +44,7 @@ def main(cfg: DictConfig):
             top_p=cfg.llm.top_p,
             seed=cfg.seed,
             is_api=cfg.llm.is_api,
+            max_tokens=cfg.llm.max_tokens,
         )
         wrappers = [wrapper] * cfg.experiment.personas.num
         wrapper_framework = wrapper
@@ -82,6 +83,7 @@ def main(cfg: DictConfig):
                     top_p=llm_config.top_p,
                     seed=cfg.seed,
                     is_api=llm_config.is_api,
+                    max_tokens=llm_config.max_tokens,
                 )
                 unique_configs[config_key] = wrapper
 

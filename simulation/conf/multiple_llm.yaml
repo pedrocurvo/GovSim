@@ -8,18 +8,20 @@ weak_model:
   render: false
   temperature: 0.0
   top_p: 1.0
+  max_tokens: 
   gpu_list: 
   - 0
   - 1
 
 
 strong_model:
-  path: deepseek-chat
+  path: gpt-4-turbo
   backend: transformers
   is_api: true
   render: false
   temperature: 0.0
   top_p: 1.0
+  max_tokens: 4000
   gpu_list: 
   - 2
   - 3

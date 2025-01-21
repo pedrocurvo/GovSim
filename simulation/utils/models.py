@@ -19,6 +19,7 @@ class ModelWandbWrapper:
         top_p,
         seed,
         is_api=False,
+        max_tokens=8000,
     ) -> None:
         self.base_lm = base_lm
         self.render = render
@@ -30,6 +31,7 @@ class ModelWandbWrapper:
         self.top_p = top_p
         self.seed = seed
         self.is_api = is_api
+        self.max_tokens = max_tokens
 
     def start_chain(
         self,
@@ -90,6 +92,11 @@ class ModelWandbWrapper:
     ):
         start_time_ms = datetime.now().timestamp() * 1000
         prompt = previous_lm._current_prompt()
+
+        if self.max_tokens:
+            max_tokens = self.max_tokens
+        else: 
+            max_tokens = 8000
 
         if temperature is None:
             temperature = self.temperature
