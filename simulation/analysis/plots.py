@@ -17,8 +17,8 @@ def compute_survival_months_stats(df):
     for col in df.columns:
         if col not in ["x", "round"]:
             # Check for the first occurrence of 0 or NaN
-            # IDEA: collapse should not happen in the first month but it starts with 100 > 95 so let's skip the first month
-            first_invalid_index = df[df[col].index != 0 and (df[col].isna() | (df[col] > 95))].index.min()
+            # IDEA: in trash only, collapse happens if resource > 5 before regeneration
+            first_invalid_index = df[df[col].index != 0 and (df[col].isna() | (df[col] > 45))].index.min()
 
             if pd.notna(first_invalid_index):
                 # Print the round number of the first occurrence

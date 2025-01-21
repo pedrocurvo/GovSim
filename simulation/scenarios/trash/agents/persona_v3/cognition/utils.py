@@ -154,6 +154,10 @@ def get_sytem_prompt_v3(persona):
         " there will be 70 units after the end of the month."
         " Taking out trash is undesirable, and each unit of trash taken out consumes 10 minutes of your life."
         " Each roommate's goal is to optimize their time in the long run, over many months."
+        " At the end of each month, the number of trash units taken out by each roommate will be revealed, and the roommates will have an opportunity to communicate with each other."
+        " They can use this as an opportunity to negotiate and persuade others to influence their behavior in the next month."
+        " For example, if there are 90 units of trash at the beginning of the month and the five roommates take out a total of 90 units,"
+        " there will be 0 units left at the end of the month before regeneration, and 50 units after regeneration."
     )
 
     if persona.goals != "":
@@ -175,8 +179,8 @@ def get_sytem_prompt_v3_nocom(persona):
         " there will be 70 units after the end of the month."
         " Taking out trash is undesirable, and each unit of trash taken out consumes 10 minutes of your life."
         " Each roommate's goal is to optimize their time in the long run, over many months."
-        " At the end of each month, the number of trash units taken out by each roommate will be revealed, and the roommates will have an opportunity to communicate with each other."
-        " You can use this as an opportunity to negotiate and persuade others to influence their behavior in the next month."
+        " For example, if there are 90 units of trash at the beginning of the month and the five roommates take out a total of 90 units,"
+        " there will be 0 units left at the end of the month before regeneration, and 50 units after regeneration."
     )
 
     if persona.goals != "":
