@@ -51,7 +51,7 @@ class TrashConverseComponent(ConverseComponent):
                     ),
                 )
                 html_interactions.append(
-                    "<strong>Framework</strong>:  This month, I caught"
+                    "<strong>Framework</strong>:  This month, I took out"
                     f" {agent_resource_num[p.agent_id]} units of trash!"
                 )
         elif (
@@ -62,10 +62,10 @@ class TrashConverseComponent(ConverseComponent):
             report = ""
             for persona in target_personas:
                 p = self.other_personas[persona.name]
-                report += f"{p.identity.name} caught {agent_resource_num[p.agent_id]} units of trash. "
+                report += f"{p.identity.name} took out {agent_resource_num[p.agent_id]} units of trash. "
             current_conversation.append(
                 (
-                    PersonaIdentity("framework", "Mayor"),
+                    PersonaIdentity("framework", "Landlord"),
                     (
                         f"Ladies and gentlemen, let me give you the monthly trash report. {report}"
                     ),
