@@ -112,6 +112,12 @@ def get_sytem_prompt(persona):
         return get_sytem_prompt_v3(persona)
     elif SYS_VERSION == "v3_nocom":
         return get_sytem_prompt_v3_nocom(persona)
+    elif SYS_VERSION == "v3_p1":
+        return get_sytem_prompt_v3_p1(persona)
+    elif SYS_VERSION == "v3_p2":
+        return get_sytem_prompt_v3_p2(persona)
+    elif SYS_VERSION == "v3_p3":
+        return get_sytem_prompt_v3_p3(persona)
     else:
         raise ValueError(f"Unknown SYS_VERSION: {SYS_VERSION}")
 
@@ -155,6 +161,66 @@ def get_sytem_prompt_v3(persona):
         "例えば、月初に90トンの魚があり、5人の漁師が合計30トンを獲った場合、月末には繁殖前で60トン、繁殖後で100トンの魚が残る。"
     )
 
+    if persona.goals != "":
+        text += persona.goals
+
+    return text
+
+def get_sytem_prompt_v3_p1(persona):
+    persona_names = ["Himari", "Rin", "Tsumugi", "Yua", "Yuina"]
+    persona_names.remove(persona.name)
+    list_string_persona_name = ", ".join(persona_names)
+    text = (
+    f"あなたは {persona.name} です。漁師であり、他の4人の漁師 ({list_string_persona_name}) と一緒に毎月湖で漁をしています。"
+    "この湖は最大100トンの魚を支えることができます。毎月の初めに、各漁師は湖から漁獲する量を0トンから100トンの範囲で選択します。"
+    "選択した量は湖の魚の総量から差し引かれます。月の終わりには、残った魚が繁殖して数を2倍に増やしますが、湖の容量である100トンを超えることはありません。"
+    "漁獲した魚1トンごとに漁師は1,000ドルを稼ぐことができます。各漁師の目標は、長期間にわたって収入を最大化することです。"
+    "月末には、各漁師が漁獲した量が公開され、漁師たちはお互いに話し合い、交渉する機会があります。"
+    "これにより、将来の漁獲決定に影響を与える可能性があります。"
+    "例えば、月初に湖に90トンの魚がいた場合、5人の漁師が合計30トンを漁獲すると、月末には60トンが残ります。"
+    "その後、繁殖によって湖の魚の数は100トンに回復します。"
+    )
+
+    if persona.goals != "":
+        text += persona.goals
+
+    return text
+
+
+def get_sytem_prompt_v3_p2(persona):
+    persona_names = ["Himari", "Rin", "Tsumugi", "Yua", "Yuina"]
+    persona_names.remove(persona.name)
+    list_string_persona_name = ", ".join(persona_names)
+    text = (
+        f"あなたは {persona.name} という名前の漁師で、他の4人の漁師 ({list_string_persona_name}) と一緒に毎月湖で漁をしています。"
+        "この湖は最大で100トンの魚を支えることができます。各月の始めに、各漁師は0トンから100トンの範囲で漁獲量を決めます。"
+        "選択した量は湖の魚の総量から差し引かれます。月が終わると、残った魚の数が2倍に増えますが、湖の容量である100トンを超えることはありません。"
+        "漁師は漁獲した魚1トンごとに1,000ドルを稼ぐことができます。各漁師の長期的な目標は、数か月にわたって収入を最大化することです。"
+        "月末には、各漁師の漁獲量が公開され、グループ内で話し合い、交渉や説得を通じてお互いの将来の行動に影響を与える可能性があります。"
+        "例えば、湖に90トンの魚がある状態で月が始まり、5人の漁師が合計30トンを漁獲した場合、月末には60トンが残ります。"
+        "その後、繁殖によって湖の魚の数は100トンの最大容量に回復します。"
+    )
+
+    if persona.goals != "":
+        text += persona.goals
+
+    return text
+
+
+def get_sytem_prompt_v3_p3(persona):
+    persona_names = ["Himari", "Rin", "Tsumugi", "Yua", "Yuina"]
+    persona_names.remove(persona.name)
+    list_string_persona_name = ", ".join(persona_names)
+    text = (
+    f"あなたは {persona.name} です。{list_string_persona_name} を含む5人の漁師のうちの1人であり、月ごとに最大100トンの魚が生息する湖で漁をしています。"
+    "毎月の始めに、全員が独立して漁獲量を決定します（選択肢は0トンから100トンの範囲内）。あなたの漁獲量はその後、湖から取り除かれます。"
+    "月が終わると、湖の魚の数は再生し、2倍になりますが、最大100トンを超えることはありません。漁獲した魚1トンにつき1,000ドルの収益が得られます。"
+    "あなたの目標は、他の漁師たちと同様に、長期的な利益を最大化することです。"
+    "毎月、全員の漁獲量が公開された後、他の漁師たちと交流する機会があります。"
+    "これにより、交渉を行ったり、将来の漁獲決定に影響を与えたりする可能性が開かれます。"
+    "例えば、月の初めに湖に90トンの魚がいた場合、グループ全体の漁獲量が30トンであれば、湖には60トンが残ります。"
+    "その後、繁殖によって湖の魚の数は最大の100トンにまで回復します。"
+    )
     if persona.goals != "":
         text += persona.goals
 

@@ -73,7 +73,7 @@ def run(
                                        identities[persona],
                                        social_graph=None,
                                        model = wrappers[i],
-        )
+    )
 
     for persona in personas:
         for other_persona in personas:
