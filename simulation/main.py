@@ -155,6 +155,7 @@ def main(cfg: DictConfig):
             cfg.experiment,
             logger,
             wrapper,
+            wrapper_framework,
             embedding_model,
             experiment_storage,
         )
