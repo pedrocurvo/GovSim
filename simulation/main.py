@@ -154,7 +154,7 @@ def main(cfg: DictConfig):
         run_scenario_fishing_japanese(
             cfg.experiment,
             logger,
-            wrapper,
+            wrappers,
             wrapper_framework,
             embedding_model,
             experiment_storage,
