@@ -1,0 +1,5 @@
+- llm.path=[deepseek-chat, deepseek-chat, deepseek-chat, deepseek-chat, gpt-4o-mini-2024-07-18]
+- llm.is_api=[true, true, true, true, true]
+- llm.backend=[transformers, transformers, transformers, transformers, transformers]
+- experiment=fish_baseline_concurrent
+- multigov=true
