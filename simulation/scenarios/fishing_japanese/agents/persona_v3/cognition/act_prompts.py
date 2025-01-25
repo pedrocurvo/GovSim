@@ -35,13 +35,13 @@ def prompt_action_choose_amount_of_fish_to_catch(
         lm += f"\n"
         lm += f" タスク: 釣りの範囲を {interval[0]}-{interval[-1]}の間に設定して、今月は何トンの魚を釣りますか？ "
         lm += reasoning_steps_prompt()
-        lm += ' 回答: "の後に最終的な答えを入れる, 例 回答: Nトン.'
+        lm += '回答: の後に最終的な答えを入れてください。例: 回答: Nトン。'
 
     with assistant():
         lm = model.gen(
             lm,
             "reasoning",
-            stop_regex=r"回答:|だから、答えはこうだ。:|\*\*回答\*\*:",
+            stop_regex=r"回答:|だから、答えはこうだ:|\*\*回答\*\*:",
             save_stop_text=True,
         )
         lm = model.find(

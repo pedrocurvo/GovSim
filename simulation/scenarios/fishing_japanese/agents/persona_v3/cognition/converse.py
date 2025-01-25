@@ -46,14 +46,14 @@ class FishingConverseComponent(ConverseComponent):
                     (
                         p.identity,
                         (
-                            f"今月は{agent_resource_num[p.agent_id]}トンの魚を釣った！"
+                            f"今月は{agent_resource_num[p.agent_id]}トンの魚を釣りました！"
                          
                         ),
                     ),
                 )
                 html_interactions.append(
                     "<strong>Framework</strong>: "
-                    f" 今月は{agent_resource_num[p.agent_id]}トンの魚を釣った！"
+                    f"今月は{agent_resource_num[p.agent_id]}トンの魚を釣りました！"
                 )
         elif (
             self.cfg.inject_resource_observation
@@ -63,7 +63,7 @@ class FishingConverseComponent(ConverseComponent):
             report = ""
             for persona in target_personas:
                 p = self.other_personas[persona.name]
-                report += f"{p.identity.name}は{agent_resource_num[p.agent_id]}トンの魚を獲った。"
+                report += f"{p.identity.name}は{agent_resource_num[p.agent_id]}トンの魚釣りました。"
             current_conversation.append(
                 (
                     PersonaIdentity("framework", "Mayor"),
