@@ -15,7 +15,7 @@ weak_model:
 
 
 strong_model:
-  path: gpt-4-turbo
+  path: deepseek-chat
   backend: transformers
   is_api: true
   render: false
@@ -53,3 +53,4 @@ hydra:
     - ./simulation/scenarios/fishing/conf
     - ./simulation/scenarios/sheep/conf
     - ./simulation/scenarios/pollution/conf
+    - ./simulation/scenarios/fishing_japanese/conf
