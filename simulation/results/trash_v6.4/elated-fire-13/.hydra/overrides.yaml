@@ -1,0 +1,3 @@
+- experiment=trash_baseline_concurrent
+- llm.path=deepseek-chat
+- llm.is_api=true
