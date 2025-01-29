@@ -424,9 +424,8 @@ class ConcurrentEnv:
                 # We want to see also the discussion in case no fish remain
                 self.terminations = {
                     agent: (
-                        (self.num_round > 0 and
                         self.internal_global_state["resource_in_pool"]
-                        > 95) # TRASH ONLY, otherwise < 5  # less than 5 fish remain, so we collapse
+                        < 5  # less than 5 fish remain, so we collapse
                         or self.num_round >= self.cfg.max_num_rounds
                     )
                     for agent in self.agents
@@ -434,13 +433,13 @@ class ConcurrentEnv:
 
                 self.internal_global_state["resource_in_pool"] = min(
                     self.cfg.initial_resource_in_pool,
-                    self.internal_global_state["resource_in_pool"] + 50, #TRAHS ONLY, otherwise * 2
-                )  # Increase the fish in the lake, but cap at 100
+                    self.internal_global_state["resource_in_pool"] * 2,
+                )  # Double the fish in the lake, but cap at 100
                 self.internal_global_state["resource_before_harvesting"] = (
                     self.internal_global_state["resource_in_pool"]
                 )
                 self.internal_global_state["sustainability_threshold"] = int(
-                    50 # TRASH ONLY, otherwise (self.internal_global_state["resource_in_pool"] // 2)
+                    (self.internal_global_state["resource_in_pool"] // 2)
                     // self.internal_global_state["num_agents"]
                 )
                 if self.cfg.harvesting_order == "random-sequential":
