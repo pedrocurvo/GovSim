@@ -112,6 +112,12 @@ def get_sytem_prompt(persona):
         return get_sytem_prompt_v1(persona)
     elif SYS_VERSION == "v3":
         return get_sytem_prompt_v3(persona)
+    elif SYS_VERSION == "v3_p1":
+        return get_sytem_prompt_v3_p1(persona)
+    elif SYS_VERSION == "v3_p2":
+        return get_sytem_prompt_v3_p2(persona)
+    elif SYS_VERSION == "v3_p3":
+        return get_sytem_prompt_v3_p3(persona)
     elif SYS_VERSION == "v3_nocom":
         return get_sytem_prompt_v3_nocom(persona)
     else:
@@ -165,6 +171,66 @@ def get_sytem_prompt_v3(persona):
 
     return text
 
+def get_sytem_prompt_v3_p1(persona):
+    persona_names = ["John", "Kate", "Jack", "Emma", "Luke"]
+    persona_names.remove(persona.name)
+    list_string_persona_name = ", ".join(persona_names)
+    text = (
+        f"You are {persona.name}, a resident in a house where you live with four other roommates ({list_string_persona_name})."
+        " The total maximum capacity of the trash bins near the house is 100 units of trash."
+        " At the start of each month, each roommate chooses a number between 0 and 100 units of trash to take out, and this amount is deducted from the total trash in the house."
+        " By the end of the month, the remaining trash increases by 50 units due to regular life activities, but never exceeds the maximum capacity of 100 units."
+        " Each unit of trash taken out costs 10 minutes of your time."
+        " The goal for each roommate is to optimize their time over the long term across many months."
+        " At the end of each month, the number of trash units taken out by each roommate is disclosed, and the roommates have the chance to discuss and negotiate with each other to potentially influence future trash collection decisions."
+        " For instance, if there are 90 units of trash at the beginning of the month and the five roommates collectively take out 30 units, 60 units will remain at month's end before regeneration, resulting in 100 units after regeneration."
+    )
+
+    if persona.goals != "":
+        text += persona.goals
+
+    return text
+
+
+def get_sytem_prompt_v3_p2(persona):
+    persona_names = ["John", "Kate", "Jack", "Emma", "Luke"]
+    persona_names.remove(persona.name)
+    list_string_persona_name = ", ".join(persona_names)
+    text = (
+        f"You're a resident named {persona.name} who, along with four others ({list_string_persona_name}), shares a house where trash needs to be taken out every month."
+        " The total maximum capacity of the trash bins near the house is 100 units of trash."
+        " Each month begins with each roommate deciding how many units of trash to take out, anywhere from 0 to 100."
+        " The chosen amount is then removed from the house's total trash."
+        " After the month ends, the remaining trash increases by 50 units due to regular life activities, but won't exceed the 100-unit limit."
+        " Each unit of trash taken out costs 10 minutes of your time. The long-term goal for each roommate is to optimize their time over many months."
+        " At each month's end, everyone's contribution is disclosed, and the group can discuss and potentially influence each other's future actions through negotiation and persuasion."
+        " To illustrate: if the house starts with 90 units of trash and the five roommates collectively take out 30 units, 60 units will remain before accumulation."
+        " After accumulation, the total will reach the full capacity of 100 units."
+    )
+
+    if persona.goals != "":
+        text += persona.goals
+
+    return text
+
+
+def get_sytem_prompt_v3_p3(persona):
+    persona_names = ["John", "Kate", "Jack", "Emma", "Luke"]
+    persona_names.remove(persona.name)
+    list_string_persona_name = ", ".join(persona_names)
+    text = (
+        f"Imagine you're {persona.name}, one of five roommates (including {list_string_persona_name}) living in a house where trash needs to be taken out each month. "
+        "The house has a maximum trash capacity of 100 units. At the start of each month, you all independently decide how many units of trash to remove, with options ranging from 0 to 100. "
+        "The chosen amounts are then deducted from the total trash in the house. "
+        "Once the month concludes, the remaining trash accumulates, increasing by 50 units but never exceeding the 100-unit limit. "
+        "Each unit of trash taken out costs 10 minutes of your time. Your objective, like that of your fellow roommates, is to optimize your time over an extended period. "
+        "Monthly, after everyone's contributions are revealed, you have a chance to interact with the other roommates. This opens up possibilities for negotiation and attempts to influence future trash collection decisions. "
+        "For instance, if the house contains 90 units of trash at the month's start, and the group's total removal is 30 units, the house will be left with 60 units. Following accumulation, the total will reach its full 100-unit capacity."
+    )
+    if persona.goals != "":
+        text += persona.goals
+
+    return text
 
 def get_sytem_prompt_v3_nocom(persona):
     persona_names = ["John", "Kate", "Jack", "Emma", "Luke"]

@@ -16,9 +16,10 @@ class TrashActComponent(ActComponent):
     - choose at one time-strep whether to take trash out one more time
     """
 
-    def __init__(self, model: ModelWandbWrapper, cfg):
-        super().__init__(model)
-        self.cfg = cfg
+    def __init__(
+        self, model: ModelWandbWrapper, model_framework: ModelWandbWrapper, cfg
+    ):
+        super().__init__(model, model_framework, cfg)
 
     def choose_how_much_trash_to_chat(
         self,

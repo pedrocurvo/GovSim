@@ -43,6 +43,7 @@ class TrashPersona(PersonaAgent):
         self,
         cfg,
         model: ModelWandbWrapper,
+        framework_model: ModelWandbWrapper,
         embedding_model: EmbeddingModel,
         base_path: str,
         memory_cls: type[AssociativeMemory] = AssociativeMemory,
@@ -57,6 +58,7 @@ class TrashPersona(PersonaAgent):
         super().__init__(
             cfg,
             model,
+            framework_model,
             embedding_model,
             base_path,
             memory_cls,

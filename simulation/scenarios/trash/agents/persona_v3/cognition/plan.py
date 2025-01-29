@@ -4,5 +4,9 @@ from pathfinder import assistant, system, user
 
 
 class TrashPlanComponent(PlanComponent):
-    def __init__(self, model: ModelWandbWrapper):
-        super().__init__(model)
+    def __init__(
+        self,
+        model: ModelWandbWrapper,
+        model_framework: ModelWandbWrapper,
+    ):
+        super().__init__(model, model_framework)
