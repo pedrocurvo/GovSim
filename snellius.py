@@ -10,7 +10,7 @@ models = {
 
 script_template = """#!/bin/bash
 
-#SBATCH --partition=gpu_a100
+#SBATCH --partition=gpu_h100
 #SBATCH --gpus=1
 #SBATCH --job-name={job_name}
 #SBATCH --ntasks=1
@@ -22,7 +22,7 @@ module purge
 module load 2023
 module load Anaconda3/2023.07-2
 
-source activate GovSim
+source activate GovComGPTQ
 cd $HOME/GovSim
 
 srun python3 -m simulation.main experiment={experiment} llm.path={llm_path} seed={seed} group_name={job_name}
@@ -33,10 +33,10 @@ from pathlib import Path
 Path("scripts").mkdir(exist_ok=True, parents=True)
 
 for model, path in models.items():
-    for seed in [0, 21]:
+    for seed in [0, 21, 42]:
         for experiment in ["fish_baseline_concurrent_universalization", "fish_baseline_concurrent", "fish_baseline_japanese", "trash_baseline_concurrent"]:
-            Path(f"scripts/{experiment}").mkdir(exist_ok=True, parents=True)
-            filename = f"scripts/{experiment}/run_{model.replace('-', '').replace('.', '')}_{seed}_{experiment}.sh"
+            Path(f"scripts/{experiment}_{seed}").mkdir(exist_ok=True, parents=True)
+            filename = f"scripts/{experiment}_{seed}/run_{model.replace('-', '').replace('.', '')}_{seed}_{experiment}.sh"
             with open(filename, "w") as f:
                 f.write(script_template.format(job_name=model, llm_path=path, seed=seed, experiment=experiment))
             print(f"Generated {filename}")
