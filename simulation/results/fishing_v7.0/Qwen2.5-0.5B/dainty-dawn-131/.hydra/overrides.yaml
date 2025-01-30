@@ -1,0 +1,4 @@
+- experiment=fish_baseline_concurrent
+- llm.path=Qwen/Qwen2.5-0.5B-Instruct
+- seed=0
+- group_name=Qwen2.5-0.5B
