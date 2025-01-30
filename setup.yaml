@@ -1,0 +1,25 @@
+name: GovSim
+channels:
+  - pytorch
+  - nvidia
+  - nvidia/label/cuda-12.1.0
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11.5
+  - pytorch=2.2.0
+  - torchvision=0.17.0
+  - torchaudio=2.2.0
+  - pytorch-cuda=12.1
+  - cuda-toolkit
+  - cuda
+  - weasyprint
+  - python-kaleido
+  - numpy=1.26.4
+  - pip
+  - pip:
+    - auto-gptq
+    - bitsandbytes
+    - transformers
+    - -r pathfinder/requirements.txt
+    - -r requirements.txt
