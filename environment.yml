@@ -1,4 +1,4 @@
-name: GovComGPTQ
+name: GovOps
 channels:
   - defaults
 dependencies:
@@ -25,6 +25,8 @@ dependencies:
   - xz=5.4.6
   - zlib=1.2.13
   - pip:
+      - -r requirements.txt
+      - -r pathfinder/requirements.txt
       - aiohappyeyeballs==2.4.4
       - aiohttp==3.11.11
       - aiosignal==1.3.2
