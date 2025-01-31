@@ -1,4 +1,4 @@
-name: fishing_${code_version}/${group_name}
+name: fishing_japanese_${code_version}/${group_name}
 scenario: fishing_japanese
 
 defaults:
