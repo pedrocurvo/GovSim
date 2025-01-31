@@ -1,0 +1,4 @@
+- experiment=trash_baseline_concurrent
+- llm.path=meta-llama/Meta-Llama-3-8B-Instruct
+- seed=42
+- group_name=Llama-3-8B

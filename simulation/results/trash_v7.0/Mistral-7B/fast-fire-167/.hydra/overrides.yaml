@@ -1,0 +1,4 @@
+- experiment=trash_baseline_concurrent
+- llm.path=mistralai/Mistral-7B-Instruct-v0.2
+- seed=42
+- group_name=Mistral-7B
